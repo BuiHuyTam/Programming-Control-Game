@@ -1,14 +1,17 @@
-function moveForwardRight(units) {
-  player.moveRight();
+function turnRight() {
+  player.turnRight();
 }
-
-function moveForwardLeft(units) {
-  player.moveLeft();
+function turnLeft() {
+  player.turnLeft();
 }
+function moveForwardRight() {}
+function moveForwardLeft() {}
+function openDoor() {}
+function jump() {}
 
-Sk.builtins.moveForwardRight = function (units) {
-  moveForwardRight(units);
+Sk.builtins.turnRight = function () {
+  turnRight();
 };
-Sk.builtins.moveForwardLeft = function (units) {
-  moveForwardLeft(units);
+Sk.builtins.turnLeft = function () {
+  turnLeft();
 };

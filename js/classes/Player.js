@@ -43,13 +43,13 @@ class Player extends Sprite {
     this.checkForVerticalCollisions();
   }
 
-  moveRight() {
+  turnRight() {
     this.switchSprite("runRight");
     this.velocity.x = 5;
     this.lastDirection = "right";
   }
 
-  moveLeft() {
+  turnLeft() {
     this.switchSprite("runLeft");
     this.velocity.x = -5;
     this.lastDirection = "left";
@@ -59,9 +59,9 @@ class Player extends Sprite {
     if (this.preventInput) return;
     this.velocity.x = 0;
     if (keys.d.pressed) {
-      this.moveRight();
+      this.turnRight();
     } else if (keys.a.pressed) {
-      this.moveLeft();
+      this.turnLeft();
     } else {
       if (this.lastDirection === "left") this.switchSprite("idleLeft");
       else this.switchSprite("idleRight");
