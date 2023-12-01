@@ -27,11 +27,6 @@ function runit() {
   mypre.innerHTML = "";
   Sk.pre = "output";
   Sk.configure({ output: outf, read: builtinRead });
-  (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = "mycanvas";
-  if (prog.includes("move_forward")) {
-    player.moveLeft();
-    return;
-  }
   var myPromise = Sk.misceval.asyncToPromise(function () {
     return Sk.importMainWithBody("<stdin>", false, prog, true);
   });

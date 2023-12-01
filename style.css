@@ -11,3 +11,7 @@ section{
     justify-content: space-around;
     align-items:center;
 }
+
+textarea{
+    height: 520px;
+}
