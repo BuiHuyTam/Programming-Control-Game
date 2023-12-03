@@ -5,41 +5,33 @@ class Player extends Sprite {
       x: 200,
       y: 200,
     };
-
     this.velocity = {
       x: 0,
       y: 0,
     };
-
     this.sides = {
       bottom: this.position.y + this.height,
     };
     this.gravity = 1;
-
     this.collisionBlocks = collisionBlocks;
   }
 
-  update(nums) {
+  update() {
     // this is the blue box
     // c.fillStyle = 'rgba(0, 0, 255, 0.5)'
     // c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
     this.position.x += this.velocity.x;
-
     this.updateHitbox();
-
     this.checkForHorizontalCollisions();
     this.applyGravity();
-
     this.updateHitbox();
-
     // c.fillRect(
     //   this.hitbox.position.x,
     //   this.hitbox.position.y,
     //   this.hitbox.width,
     //   this.hitbox.height
     // )
-
     this.checkForVerticalCollisions();
   }
 
@@ -53,6 +45,32 @@ class Player extends Sprite {
     this.switchSprite("runLeft");
     this.velocity.x = -5;
     this.lastDirection = "left";
+  }
+
+  moveForwardRight() {
+    this.turnRight();
+    this.velocity.x += 64;
+    this.update();
+  }
+
+  moveForwardLeft() {
+    this.turnLeft();
+    this.velocity.x -= 64;
+    this.update();
+  }
+
+  jumpLeft() {
+    this.turnLeft();
+    this.moveForwardLeft();
+    this.velocity.y = -25;
+    this.update();
+  }
+
+  jumpRight() {
+    this.turnRight();
+    this.moveForwardRight();
+    this.velocity.y = -25;
+    this.update();
   }
 
   handleInput(keys) {
@@ -109,22 +127,18 @@ class Player extends Sprite {
           const offset = this.hitbox.position.x - this.position.x;
           this.position.x =
             collisionBlock.position.x + collisionBlock.width - offset + 0.01;
-          break;
+          return true;
         }
 
         if (this.velocity.x > 0) {
           const offset =
             this.hitbox.position.x - this.position.x + this.hitbox.width;
           this.position.x = collisionBlock.position.x - offset - 0.01;
-          break;
+          return true;
         }
       }
     }
-  }
-
-  applyGravity() {
-    this.velocity.y += this.gravity;
-    this.position.y += this.velocity.y;
+    return false;
   }
 
   checkForVerticalCollisions() {
@@ -159,5 +173,10 @@ class Player extends Sprite {
         }
       }
     }
+  }
+
+  applyGravity() {
+    this.velocity.y += this.gravity;
+    this.position.y += this.velocity.y;
   }
 }

@@ -1,17 +1,41 @@
-function turnRight() {
-  player.turnRight();
-}
-function turnLeft() {
-  player.turnLeft();
-}
-function moveForwardRight() {}
-function moveForwardLeft() {}
-function openDoor() {}
-function jump() {}
-
-Sk.builtins.turnRight = function () {
-  turnRight();
+const moves = {
+  moveForwardRight: function () {
+    player.moveForwardRight();
+  },
+  moveForwardLeft: function () {
+    player.moveForwardLeft();
+  },
+  jumpLeft: function () {
+    // player.velocity.x -= 64;
+    // if (player.velocity.y === 0) player.velocity.y = -25;
+    // player.update();
+    player.jumpLeft();
+  },
+  jumpRight: function () {
+    player.jumpRight();
+  },
+  openDoor: function () {
+    openDoorFunc();
+  },
 };
-Sk.builtins.turnLeft = function () {
-  turnLeft();
+
+// Convert JavaScript function into Python object that is callable:
+Sk.builtins.move_forward_right = function () {
+  moves.moveForwardRight();
+};
+
+Sk.builtins.move_forward_left = function () {
+  moves.moveForwardLeft();
+};
+
+Sk.builtins.jump_left = function () {
+  moves.jumpLeft();
+};
+
+Sk.builtins.jump_right = function () {
+  moves.jumpRight();
+};
+
+Sk.builtins.open_door = function () {
+  moves.openDoor();
 };

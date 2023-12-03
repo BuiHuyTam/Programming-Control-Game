@@ -21,6 +21,42 @@ function builtinRead(x) {
  * call Sk.importMainWithBody()
  */
 
+// function runit() {
+//   var commandsText = document.getElementById("yourcode").value;
+//   var commandsArray = commandsText.split("\n"); // Tách các dòng thành một mảng
+
+//   Sk.pre = "output";
+//   Sk.configure({ output: outf, read: builtinRead });
+//   if (commandsArray.length <= 1) {
+//     var myPromise = Sk.misceval.asyncToPromise(function () {
+//       return Sk.importMainWithBody("<stdin>", false, commandsText, true);
+//     });
+//     myPromise.then(
+//       function (mod) {
+//         console.log("success");
+//       },
+//       function (err) {
+//         console.log(err.toString());
+//       }
+//     );
+//   } else {
+//     commandsArray.forEach(function (command) {
+//       var myPromise = Sk.misceval.asyncToPromise(function () {
+//         return Sk.importMainWithBody("<stdin>", false, command, true);
+//       });
+
+//       myPromise.then(
+//         function (mod) {
+//           console.log("Command executed successfully");
+//         },
+//         function (err) {
+//           console.log(err.toString());
+//         }
+//       );
+//     });
+//   }
+// }
+
 function runit() {
   var prog = document.getElementById("yourcode").value;
   var mypre = document.getElementById("output");
