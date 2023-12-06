@@ -20,11 +20,11 @@ const moves = {
 };
 
 // Convert JavaScript function into Python object that is callable:
-Sk.builtins.move_forward_right = function () {
+Sk.builtins.move_right = function () {
   moves.moveForwardRight();
 };
 
-Sk.builtins.move_forward_left = function () {
+Sk.builtins.move_left = function () {
   moves.moveForwardLeft();
 };
 
@@ -36,6 +36,6 @@ Sk.builtins.jump_right = function () {
   moves.jumpRight();
 };
 
-Sk.builtins.open_door = function () {
+Sk.builtins.open_exit = function () {
   moves.openDoor();
 };
